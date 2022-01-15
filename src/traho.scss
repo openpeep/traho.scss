@@ -1,0 +1,207 @@
+:root {
+    --traho-font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --traho-body-font-size: 1.2rem;
+    --traho-body-line-height: 1.5;
+
+    --traho-1-heading: 2.5rem;
+    --traho-2-heading: 3rem;
+    --traho-3-heading: 3.5rem;
+    --traho-4-heading: 4rem;
+    --traho-5-heading: 4.5rem;
+    --traho-6-heading: 5rem;
+    --traho-7-heading: 5.5rem;
+    --traho-8-heading: 6rem;
+
+    --traho-1-spacing: 0.50rem;
+    --traho-2-spacing: 0.75rem;
+    --traho-3-spacing: 1rem;
+    --traho-4-spacing: 1.50rem;
+    --traho-5-spacing: 1.75rem;
+    --traho-6-spacing: 2rem;
+    --traho-7-spacing: 2.75rem;
+    --traho-8-spacing: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+
+}
+
+
+/**
+ * Some Function Utilities
+ */
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+/**
+ * Reset default browser appearance
+ */
+* {box-sizing: border-box}
+body, h1, h2, h3, h4, h5, h6, p {
+    margin: 0; padding: 0;
+}
+
+body {
+    font-family: var(--traho-font-family);
+    font-size: var(--traho-body-font-size);
+    line-height: var(--traho-body-line-height);
+}
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+$headings: 1, 2, 3, 4, 5, 6, 7, 8;
+@each $h in $headings {
+    .heading-#{$h} {
+        font-size: var(--traho-#{$h}-heading);
+        line-height: normal;
+    }
+}
+
+/**
+ * Paragraphs
+ */
+p {
+
+}
+
+/**
+ * Containers, rows and grids
+ */
+.container, .container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--traho-gutter-x,.75rem);
+}
+
+.row {
+    --traho-gutter-x: 1.5rem;
+    --traho-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--traho-gutter-y));
+    margin-right: calc(-.5 * var(--traho-gutter-x));
+    margin-left: calc(-.5 * var(--traho-gutter-x));
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+/**
+ * Font sizes, weights and variations
+ */
+$fws: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+@each $fw in $fws {
+    .fw-#{$fw}00 {
+        font-weight: #{$fw}00
+    }
+}
+
+$fss: normal, italic, oblique;
+@each $fs in $fss {
+    .fs-#{$fs} {
+        font-style: #{$fs}
+    }
+}
+
+/**
+ * Spacing (paddings and margins)
+ */
+$spacings: 1, 2, 3, 4, 5, 6, 7, 8;
+@each $s in $spacings {
+    .p-#{$s} {
+        padding: var(--traho-#{$s}-spacing)
+    }
+    .pt-#{$s} {
+        padding-top: var(--traho-#{$s}-spacing)
+    }
+    .pr-#{$s} {
+        padding-right: var(--traho-#{$s}-spacing)
+    }
+    .pb-#{$s} {
+        padding-bottom: var(--traho-#{$s}-spacing)
+    }
+    .pl-#{$s} {
+        padding-left: var(--traho-#{$s}-spacing)
+    }
+}
+@each $s in $spacings {
+    .m-#{$s} {
+        margin: var(--traho-#{$s}-spacing)
+    }
+    .mt-#{$s} {
+        margin-top: var(--traho-#{$s}-spacing)
+    }
+    .mr-#{$s} {
+        margin-right: var(--traho-#{$s}-spacing)
+    }
+    .mb-#{$s} {
+        margin-bottom: var(--traho-#{$s}-spacing)
+    }
+    .ml-#{$s} {
+        margin-left: var(--traho-#{$s}-spacing)
+    }
+}
+
+$lhs: 1, 2, 3, 4, 5;
+@each $lh in $lhs {
+    .lh-#{$lh} {
+        line-height: #{$lh};
+    }
+}
+
+/**
+ * Content and text alignments
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+ */
+$alignments: center, start, end, flex-start, flex-end, normal, baseline,
+             first baseline, last baseline, space-between, space-around,
+             space-evenly, stretch, safe center, unsafe center, inherit, initial, revert, unset;
+@each $alignment in $alignments {
+    $alignPropertyID: str-replace(#{$alignment}, ' ', '-');
+    .align-content-#{$alignPropertyID} {
+        align-content: #{$alignment}
+    }
+}
+
+$text_alignments: left, center, right;
+@each $text_alignment in $text_alignments {
+    .text-align-#{$text_alignment} {
+        text-align: #{$text_alignment}
+    }
+}
+
+/**
+ * Displayment and Opacity
+ */
+$displays: block, inline, inline-block, flex, inline-flex, grid, inline-grid, flow-root,
+           none, contents, table, table-row, list-item, inherit, initial, revert, unset;
+@each $display in $displays {
+    .d-#{$display} {
+        display: $display;
+    }
+}
+
+$alphas: 9,8,7,6,5,4,3,2,1,0;
+@each $alpha in $alphas {
+    .opacity-#{$alpha} {
+        @if $alpha != 1 and $alpha != 0 {
+            opacity: #{10% * ($alpha)}
+        } @else {
+            opacity: $alpha;
+        }
+    }
+}
