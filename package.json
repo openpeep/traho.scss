@@ -1,0 +1,14 @@
+{
+  "name": "traho.scss",
+  "version": "1.0.0",
+  "description": "🎨 A minimal SCSS Framework to make good looking websites really quickly",
+  "main": "index.js",
+  "repository": "git@github.com:openpeep/traho.scss.git",
+  "author": "George Lemon <georgelemon@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dist": "sass --style=compressed --no-source-map src/traho.scss dist/traho.min.css",
+    "distmap": "sass --style=expanded src/traho.scss dist/traho.css",
+    "develop": "sass --watch src/traho.scss dist/traho.develop.css"
+  }
+}
