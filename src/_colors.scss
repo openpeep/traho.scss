@@ -26,11 +26,11 @@ $bgs: black, blue, brown, cyan, fuchsia, gray, green, lime, navy, orange,
           lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue,
           mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen,
           mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite,
-          oldlace, olive, olvedrab, orangered, orchid, palegoldenrod, palegreen, paleturquoise,
+          oldlace, olive, olivedrab, orangered, orchid, palegoldenrod, palegreen, paleturquoise,
           palevioletred, papayawhip, peachpuff, peru, plum, powderblue, rosybrown, royalblue,
           saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue,
           slategray, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet,
-          wheat, white, whitesmoke, yellow, yellogreen;
+          wheat, white, whitesmoke, yellow, yellowgreen;
 @each $extcolor in $extcolors {
     .bg-#{"" + $extcolor} {
         background-color: $extcolor
