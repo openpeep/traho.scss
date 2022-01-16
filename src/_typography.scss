@@ -1,0 +1,45 @@
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+$headings: 1, 2, 3, 4, 5, 6, 7, 8;
+@each $h in $headings {
+    .display-#{$h} {
+        font-size: var(--traho-#{$h}-heading);
+        line-height: normal;
+    }
+}
+
+/**
+ * Font sizes, weights and variations
+ */
+$fws: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+@each $fw in $fws {
+    .fw-#{$fw}00 {
+        font-weight: #{$fw}00
+    }
+}
+
+$fss: normal, italic, oblique;
+@each $fs in $fss {
+    .fs-#{$fs} {
+        font-style: #{$fs}
+    }
+}
+
+$lhs: 1, 2, 3, 4, 5;
+@each $lh in $lhs {
+    .lh-#{$lh} {
+        line-height: #{1 * ($lh)};
+    }
+}
+
+$text_alignments: left, center, right;
+@each $text_alignment in $text_alignments {
+    .text-align-#{$text_alignment} {
+        text-align: #{$text_alignment}
+    }
+}

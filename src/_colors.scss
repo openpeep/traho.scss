@@ -1,0 +1,41 @@
+/**
+ * Basic named colors exposed as classes
+ * for setting a background color
+ */
+$bgs: black, blue, brown, cyan, fuchsia, gray, green, lime, navy, orange,
+      purple, pink, red, silver, teal, white, yellow;
+@each $bg in $bgs {
+    .bg-#{"" + $bg} {
+        background-color: $bg;
+    }
+}
+
+/**
+ * Extended named colors exposed as classes
+ * for setting a background color
+ */
+ $extcolors: aliceblue, antiquewhite, aqua, azure, beige, bisque, blanchedalmond, blueviolet,
+          burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson,
+          cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkgrey, darkolivegreen,
+          darkorange, darkorchid, darkred, darkseagreen, darkslateblue, darkslategray,
+          darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dodgerblue, firebrick,
+          floralwhite, forestgreen, gainsboro, ghostwhite, gold, goldenrod, honeydew, hotpink
+          indianred, indigo, ivory, khaki, lavender, lavenderblush, lawngreen, lemonchiffon,
+          lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgray, lightgreen,
+          lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightsteelblue,
+          lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue,
+          mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen,
+          mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite,
+          oldlace, olive, olvedrab, orangered, orchid, palegoldenrod, palegreen, paleturquoise,
+          palevioletred, papayawhip, peachpuff, peru, plum, powderblue, rosybrown, royalblue,
+          saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue,
+          slategray, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet,
+          wheat, white, whitesmoke, yellow, yellogreen;
+@each $extcolor in $extcolors {
+    .bg-#{"" + $extcolor} {
+        background-color: $extcolor
+    }
+    .text-#{"" + $extcolor} {
+        color: $extcolor
+    }
+}

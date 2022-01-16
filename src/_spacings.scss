@@ -1,0 +1,64 @@
+/**
+ * Spacing (paddings and margins)
+ */
+$spacings: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+@each $s in $spacings {
+    .p-#{$s} {
+        padding: var(--traho-#{$s}-spacing)
+    }
+    .pt-#{$s} {
+        padding-top: var(--traho-#{$s}-spacing)
+    }
+    .pr-#{$s} {
+        padding-right: var(--traho-#{$s}-spacing)
+    }
+    .pb-#{$s} {
+        padding-bottom: var(--traho-#{$s}-spacing)
+    }
+    .pl-#{$s} {
+        padding-left: var(--traho-#{$s}-spacing)
+    }
+    .px-#{$s} {
+        padding-left: var(--traho-#{$s}-spacing) + !important;
+        padding-right: var(--traho-#{$s}-spacing) + !important;
+    }
+    .py-#{$s} {
+        padding-top: var(--traho-#{$s}-spacing) + !important;
+        padding-bottom: var(--traho-#{$s}-spacing) + !important;
+    }
+}
+@each $s in $spacings {
+    .m-#{$s} {
+        margin: var(--traho-#{$s}-spacing)
+    }
+    .mt-#{$s} {
+        margin-top: var(--traho-#{$s}-spacing)
+    }
+    .mr-#{$s} {
+        margin-right: var(--traho-#{$s}-spacing)
+    }
+    .mb-#{$s} {
+        margin-bottom: var(--traho-#{$s}-spacing)
+    }
+    .ml-#{$s} {
+        margin-left: var(--traho-#{$s}-spacing)
+    }
+    .mx-#{$s} {
+        margin-left: var(--traho-#{$s}-spacing);
+        margin-right: var(--traho-#{$s}-spacing)
+    }
+    .my-#{$s} {
+        margin-top: var(--traho-#{$s}-spacing);
+        margin-bottom: var(--traho-#{$s}-spacing)
+    }
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}

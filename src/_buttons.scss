@@ -1,0 +1,55 @@
+$btn_sizes: (
+    s: 5,
+    l: 7,
+    m: 8,
+    xl: 10,
+    xxl: 12
+);
+
+$btn_types: primary, secondary, default;
+
+@mixin set_btn_size($size) {
+    $sizeunit: map-get($btn_sizes, $size);
+    padding: $sizeunit + px (2 * $sizeunit) + px;
+    font-size: ($sizeunit * 2 + 4) + px
+}
+
+.btn {
+    background: white;
+    display: inline-block;
+    font-weight: 500;
+    text-decoration: none;
+    border: 0;
+    transition: all .13s ease;
+
+    @each $btn_size, $btn_size_unit in $btn_sizes {
+        &.btn-#{$btn_size} {
+            @include set-border-radius($btn_size);
+            @include set_btn_size($btn_size);
+        }
+    }
+
+    @each $btn_type in $btn_types {
+        &.btn-#{$btn_type} {
+            color: whitesmoke;
+            background-color: blue;
+        }
+    }
+
+    &.btn-link {
+        color: blue;
+        background-color: transparent !important;
+
+        &.btn-link-underline {
+            text-decoration: underline
+        }
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:active {
+        box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 30%);
+    }
+}

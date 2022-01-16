@@ -1,0 +1,64 @@
+$radius_sizes: (
+    s: 0.15rem,
+    l: 0.25rem,
+    m: 0.40rem,
+    xl: 0.55rem,
+    xxl: 0.90rem
+);
+
+$radiusSizes: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40;
+@each $radius in $radiusSizes {
+    .border-radius-#{$radius} {
+        border-radius: $radius + px
+    }
+    .border-top-left-radius-#{$radius} {
+        border-top-left-radius: $radius + px
+    }
+    .border-top-right-radius-#{$radius} {
+        border-top-right-radius: $radius + px
+    }
+    .border-bottom-left-radius-#{$radius} {
+        border-bottom-left-radius: $radius + px
+    }
+    .border-bottom-right-radius-#{$radius} {
+        border-bottom-right-radius: $radius + px
+    }
+}
+
+/**
+ * Create various .rounded classes
+ */
+@mixin set_border_radius($size) {
+    border-radius: map-get($radius_sizes, $size);
+}
+
+.border-radius-0 {
+    border-radius: 0 !important
+}
+
+$roundsizes: s, l, m, xl, xxl;
+@each $roundsize in $roundsizes {
+    .border-radius-#{$roundsize} {
+        @include set-border-radius($roundsize)
+    }
+}
+
+/**
+ * Create .border-width classes
+ */
+$strokeSizes: 1, 2, 3, 4, 5, 6, 7, 8, 10;
+@each $stroke in $strokeSizes {
+    .border-width-#{$stroke} {
+        border-width: $stroke + px
+    }
+}
+
+/**
+ * Create .border-style classes
+ */
+$borderStyles: dotted, dashed, solid, double, groove, ridge, inset, outset, none, hidden;
+@each $borderStyle in $borderStyles {
+    .border-style-#{$borderStyle} {
+        border-style: $borderStyle
+    }
+}

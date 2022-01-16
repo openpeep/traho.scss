@@ -24,23 +24,37 @@
     --traho-6-spacing: 2rem;
     --traho-7-spacing: 2.75rem;
     --traho-8-spacing: 3rem;
+    --traho-9-spacing: 3.50rem;
+    --traho-10-spacing: 3.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-    // 
-}
+$enable-grid-classes: true;
+$enable-cssgrid: true;
+$grid-gutter-width: 1.5rem !default;
+$variable-prefix: traho;
+$grid-columns: 12 !default;
+$grid-row-columns: 6 !default;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
 
+@import "functions";
+@import "mixins/breakpoints";
+@import "borders";
+@import "buttons";
+@import "colors";
+@import "typography";
+@import "spacings";
+@import "grid";
 
-/**
- * Some Function Utilities
- */
-@function str-replace($string, $search, $replace: '') {
-    $index: str-index($string, $search);
-    @if $index {
-        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-    }
-    @return $string;
-}
+// @media (prefers-color-scheme: dark) {
+//     // 
+// }
 
 /**
  * Reset default browser appearance
@@ -57,25 +71,16 @@ body {
 }
 
 /**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
-}
-
-$headings: 1, 2, 3, 4, 5, 6, 7, 8;
-@each $h in $headings {
-    .heading-#{$h} {
-        font-size: var(--traho-#{$h}-heading);
-        line-height: normal;
-    }
-}
-
-/**
  * Paragraphs
  */
 p {
-
+    margin-bottom: 1rem;
+}
+$vhs: 20, 30, 40, 50, 60, 70, 80, 90, 100;
+@each $vh in $vhs {
+    .vh-#{$vh} {
+        height: $vh + vh;
+    }
 }
 
 /**
@@ -104,68 +109,6 @@ p {
     }
 }
 
-/**
- * Font sizes, weights and variations
- */
-$fws: 1, 2, 3, 4, 5, 6, 7, 8, 9;
-@each $fw in $fws {
-    .fw-#{$fw}00 {
-        font-weight: #{$fw}00
-    }
-}
-
-$fss: normal, italic, oblique;
-@each $fs in $fss {
-    .fs-#{$fs} {
-        font-style: #{$fs}
-    }
-}
-
-/**
- * Spacing (paddings and margins)
- */
-$spacings: 1, 2, 3, 4, 5, 6, 7, 8;
-@each $s in $spacings {
-    .p-#{$s} {
-        padding: var(--traho-#{$s}-spacing)
-    }
-    .pt-#{$s} {
-        padding-top: var(--traho-#{$s}-spacing)
-    }
-    .pr-#{$s} {
-        padding-right: var(--traho-#{$s}-spacing)
-    }
-    .pb-#{$s} {
-        padding-bottom: var(--traho-#{$s}-spacing)
-    }
-    .pl-#{$s} {
-        padding-left: var(--traho-#{$s}-spacing)
-    }
-}
-@each $s in $spacings {
-    .m-#{$s} {
-        margin: var(--traho-#{$s}-spacing)
-    }
-    .mt-#{$s} {
-        margin-top: var(--traho-#{$s}-spacing)
-    }
-    .mr-#{$s} {
-        margin-right: var(--traho-#{$s}-spacing)
-    }
-    .mb-#{$s} {
-        margin-bottom: var(--traho-#{$s}-spacing)
-    }
-    .ml-#{$s} {
-        margin-left: var(--traho-#{$s}-spacing)
-    }
-}
-
-$lhs: 1, 2, 3, 4, 5;
-@each $lh in $lhs {
-    .lh-#{$lh} {
-        line-height: #{1 * ($lh)};
-    }
-}
 
 /**
  * Content and text alignments
@@ -178,12 +121,6 @@ $alignments: center, start, end, flex-start, flex-end, normal, baseline,
     $alignPropertyID: str-replace(#{$alignment}, ' ', '-');
     .align-content-#{$alignPropertyID} {
         align-content: #{$alignment}
-    }
-}
-$text_alignments: left, center, right;
-@each $text_alignment in $text_alignments {
-    .text-align-#{$text_alignment} {
-        text-align: #{$text_alignment}
     }
 }
 
@@ -205,44 +142,5 @@ $alphas: 9,8,7,6,5,4,3,2,1,0;
         } @else {
             opacity: $alpha;
         }
-    }
-}
-
-/**
- * Basic named colors exposed as classes
- * for setting a background color
- */
-$bgs: black, blue, brown, cyan, fuchsia, gray, green, lime, navy, orange,
-      purple, pink, red, silver, teal, white, yellow;
-@each $bg in $bgs {
-    .bg-#{$bg} {
-        background-color: $bg;
-    }
-}
-
-/**
- * Extended named colors exposed as classes
- * for setting a background color
- */
- $extbgs: aliceblue, antiquewhite, aqua, azure, beige, bisque, blanchedalmond, blueviolet,
-          burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson,
-          cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkgrey, darkolivegreen,
-          darkorange, darkorchid, darkred, darkseagreen, darkslateblue, darkslategray,
-          darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dodgerblue, firebrick,
-          floralwhite, forestgreen, gainsboro, ghostwhite, gold, goldenrod, honeydew, hotpink
-          indianred, indigo, ivory, khaki, lavender, lavenderblush, lawngreen, lemonchiffon,
-          lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgray, lightgreen,
-          lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightsteelblue,
-          lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue,
-          mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen,
-          mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite,
-          oldlace, olive, olvedrab, orangered, orchid, palegoldenrod, palegreen, paleturquoise,
-          palevioletred, papayawhip, peachpuff, peru, plum, powderblue, rosybrown, royalblue,
-          saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue,
-          slategray, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet,
-          wheat, white, whitesmoke, yellow, yellogreen;
-@each $extbg in $extbgs {
-    .bg-#{$extbg} {
-        background-color: $extbg;
     }
 }
